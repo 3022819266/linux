@@ -1,0 +1,72 @@
+nginx
+  它可以处理静态文件，比如用户图片等，当用户要查找数据，登陆时他就把请求转发给后面的程序，再把结果带回来，它还可以实现负载均衡，当后面有好几台服务器，他把用户均匀地分配过去，防止某一台服务器被挤爆
+它采用以下分层结构
+  main (全局块)
+  └── events (事件块)
+  └── http (HTTP块)
+    ├── server (虚拟主机块)
+    │   └── location (URI匹配块)
+    └── upstream (负载均衡块)
+  它的主要配置文件为/etc/nginx/nginx.conf
+  它包含了如上所示的模块配置，并且其中有一条include语句来引入虚拟机配置
+  
+  虚拟机配置
+  它相当于一个标识，让nginx知道去哪里执行任务，在/etc/nginx/目录下，除了nginx.conf，其余绝大部分都为虚拟机配置文件，它们都被主配置文件中一条include /etc/nginx/conf.d/*.conf引入
+  /etc/nginx的大致目录结构如下
+  /etc/nginx/
+  ├── nginx.conf          # 主配置文件
+  ├── conf.d/             # 虚拟主机配置目录
+  │   ├── default.conf
+  │   └── example.com.conf
+  ├── sites-available/    # 可用站点配置（Debian系）
+  ├── sites-enabled/      # 已启用站点配置（符号链接）
+  ├── mime.types          # MIME类型定义
+  └── ssl/                # SSL证书目录
+
+  /var/log/nginx/
+  ├── access.log          # 访问日志
+  └── error.log           # 错误日志
+
+  /usr/share/nginx/html/  # 默认静态文件根目录
+
+下面逐一讲解配置文件中每个模块的配置：
+域名匹配，这一步让nginx知道访问到那个域名时，把任务交给谁来处理,格式如下：
+server {
+  listen 监听端口
+  server_name 域名;
+}
+其中匹配域名有多种匹配方式
+1，精确匹配
+www.example.com
+2.通配符匹配
+*.example.com
+匹配以example.com结尾的域名
+3.匹配多个域名，使用空格分隔
+example.com wwww.example.com 
+4.正则匹配
+~^www\d+\.example\.com$;
+5.默认匹配
+server_name _;
+匹配以www开头+数字+.example.com的域名
+优先级：
+精确匹配 > 通配符在前 > 通配符在后 > 正则匹配>默认匹配
+
+location：URI匹配规则
+这里将它分为两部分便于理解
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
