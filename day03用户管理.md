@@ -6,7 +6,7 @@ userdel -r 删除用户以及目录，一般不建议删完
 
 用户组管理：
 groupadd 组名 新增用户组
-groupder 组名 删除用户组
+groupdel 组名 删除用户组
 useradd -g 组名 用户名 创建用户并且直接将用户加入到该组
 
 指定运行级别：
