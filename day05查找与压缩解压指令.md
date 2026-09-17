@@ -1,7 +1,7 @@
 查找指令：
 find 从指定目录下开始向下遍历查找
 用法：
-find 搜索范范围 选项
+find 搜索范围 选项
 选项如下：
 -name 按文件名查找
 -user 按拥有者查找
@@ -14,7 +14,7 @@ find /home -user lzy
 find /home -size 100m
 
 locate 定位文件所在的目录，速度极快
-但在使用locate之前是必须使用updatedb创建数据库
+但在使用locate之前必须使用updatedb创建数据库
 用法：
 locate 文件名
 
