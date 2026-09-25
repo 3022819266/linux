@@ -1,7 +1,7 @@
 
 # Linux Nginx 配置速查
 
-> 涵盖 Nginx 核心定位、配置文件分层结构、`server_name` 域名匹配、`location` URI 规则、反向代理与负载均衡、静态文件服务，以及一份完整的站点配置示例。完全符合 GitHub Flavored Markdown 标准，可直接复制粘贴或拖入仓库渲染。
+> 涵盖 Nginx 核心定位、配置文件分层结构、`server_name` 域名匹配、`location` URI 规则、反向代理与负载均衡、静态文件服务，以及一份完整的站点配置示例。
 
 ## 目录
 
