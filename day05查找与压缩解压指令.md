@@ -202,11 +202,4 @@ tar -zxvf backup.tar.gz -C /home/lzy/
 
 ---
 
-## 勘误说明
 
-| 原文 | 修正 | 原因 |
-| :--- | :--- | :--- |
-| `find /home -size 100m` | `find /home -size 100M` | `find` 的容量单位须大写 `M` |
-| `locate 文件名`（未提建库） | 前置 `sudo updatedb` | 数据库不存在或过期时 locate 失效 |
-| `unzip -d 指定目录 压缩包所在的目录` | `unzip -d 目标目录 压缩包路径` | 明确参数顺序与含义 |
-| `tar -zxvf ... -c 指定文件目录` | `tar -zxvf ... -C 指定目录` | `-C`（大写）才是指定解压目录 |
