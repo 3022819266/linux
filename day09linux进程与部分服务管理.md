@@ -168,13 +168,4 @@ systemctl list-unit-files --type=service --all
 
 ---
 
-## 勘误说明
 
-| 原文 | 修正 | 原因 |
-| :--- | :--- | :--- |
-| `ps -aux` | `ps aux` | BSD 风格 `aux` 通常不加前置 `-` |
-| `vsz / Rss` | `VSZ / RSS` | 列名为大写，VSZ=虚拟内存、RSS=物理内存 |
-| `system v 展示风格` | `System V` | 规范写法 |
-| `c 数字越大优先级越低` | `C` 为 CPU 调度估算因子 | 直观优先级应看 `NI`（nice）列 |
-| `systemctl 服务 选项` | `systemctl 选项 服务名` | 正确语序为"动词在前、服务名在后" |
-| `kill / killall -9` | 补充"优先 SIGTERM，无效再用 -9" | 强制杀死可能丢数据 |
