@@ -1,7 +1,7 @@
 
 # Linux 文件与目录管理命令速查手册
 
-> 整理常用 Linux 文件 / 目录操作命令，符合 GitHub Flavored Markdown 规范，可直接放入仓库渲染。
+
 
 ## 目录
 
