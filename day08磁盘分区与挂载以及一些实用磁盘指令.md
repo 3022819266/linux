@@ -207,13 +207,3 @@ tree /home
 
 ---
 
-## 勘误说明
-
-| 原文 | 修正 | 原因 |
-| :--- | :--- | :--- |
-| `uiud` | `UUID` | 拼写笔误，应为通用唯一标识符 UUID |
-| `mkfs -t 分区类型` | `mkfs -t 文件系统类型`（如 `ext4`） | `-t` 指定的是文件系统类型，不是分区类型 |
-| `du -l -hac --max-depth=1 /hone` | `du -ahc --max-depth=1 /home` | `-l` 非 `du` 统计目录用选项，应为 `-a`；`/hone` 拼写错误应为 `/home` |
-| `fdisk` 仅列 `n/p/e/w` | 补充 `q`（不保存退出）与各字段顺序 | 完整交互流程便于实操 |
-| `mount` 临时挂载 | 补充 `mkdir` 创建挂载点 + `mount -a` 测试 fstab | 避免重启失效与配置错误 |
-| 第四列"可以保持 defaults" | 明确第五、六列为 `0 0` | fstab 共 6 字段，补全 dump 与 fsck 列说明 |
