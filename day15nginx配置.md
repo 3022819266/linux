@@ -50,8 +50,7 @@ main (全局块)
 - **虚拟主机配置**（vhost）相当于一个"标识"，告诉 Nginx 访问到某个域名/端口时去哪里执行任务。
 - 在 `/etc/nginx/` 目录下，除 `nginx.conf` 外绝大部分都是虚拟主机配置文件，它们都由主配置中的 `include /etc/nginx/conf.d/*.conf;` 引入。
 
-> [!IMPORTANT]
-> 原文"虚拟机配置"应为"**虚拟主机配置**（virtual host）"，与虚拟化"虚拟机"无关。
+
 
 ---
 
@@ -101,8 +100,7 @@ server {
 | **正则匹配** | `~^www\d+\.example\.com$` | 以 `www`+数字+`.example.com` 结尾 |
 | **默认（兜底）** | `server_name _;` | 约定俗成，处理所有未匹配到的请求 |
 
-> [!WARNING]
-> `server_name` 只写**域名**，**不要带 `http://` 协议前缀**（原文示例误写为 `http://www.example.com`）。
+
 
 **匹配优先级**：精确匹配 > 通配符在前（`*.example.com`） > 通配符在后（`www.example.*`） > 正则匹配 > 默认匹配 `_`。
 
@@ -162,8 +160,6 @@ proxy_set_header 头部名 头部值;
 | `X-Forwarded-For` | `$proxy_add_x_forwarded_for` | 记录完整的代理链路 IP |
 | `X-Forwarded-Proto` | `$scheme` | 告知原始请求协议（http/https） |
 
-> [!WARNING]
-> 变量必须紧跟 `$`，**中间不能有空格**（原文误写为 `$ host`、`$ remote_addr`，正确是 `$host`、`$remote_addr`）。
 
 ---
 
