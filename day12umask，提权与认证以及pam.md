@@ -99,8 +99,7 @@ visudo -f /etc/sudoers.d/文件名   # 编辑 /etc/sudoers.d 下的独立配置�
 | `lzy ALL = (ALL:ALL) NOPASSWD:/usr/bin/ls,/usr/bin/chmod` | lzy 免密执行 `ls`、`chmod` 两个命令 |
 | `dev ALL = (ALL:ALL) ALL,!/usr/bin/rm` | dev 可执行所有命令，但**禁止** `rm` |
 
-> [!WARNING]
-> 原文「`1 ALL = ...`」以数字 `1` 作为用户名不合规范，此处示例改用 `dev` 演示 `!` 禁止危险命令的写法。命令**必须使用绝对路径**。
+
 
 ---
 
