@@ -43,7 +43,7 @@ sudo nginx -T | grep -c server_name     # 配置层
 } 2>&1 | tee ~/shell/nginx-baseline-20261010.txt
 ```
 
-![基线状态](01-baseline.png)
+![基线状态](images/nginx/01-baseline.png)
 
 ---
 
@@ -103,7 +103,7 @@ diff /home/lzy/shell/nginx.bak.20261010 /etc/nginx/nginx.conf
 
 输出只有一行差异,而且正是 `sites-enabled` 那一行。
 
-![改完配置文件](02-planted-fault.png)
+![改完配置文件](images/nginx/02-planted-fault.png)
 
 ---
 
@@ -131,7 +131,7 @@ sudo nginx -t
 | 日志、pid、socket 等**运行时文件** | 权限 / 环境 |
 | 数据目录 | 权限 / 磁盘 |
 
-![nginx -t 的假失败](03-nginx-t-false-failure.png)
+![nginx -t 的假失败](images/nginx/03-nginx-t-false-failure.png)
 
 ---
 
@@ -156,7 +156,7 @@ sudo nginx -T | grep -c server_name
 
 > 顺带:这个 `2` 不是 0,因为 `grep -c server_name` 把 nginx.conf 里两行**被注释掉**的配置也算进去了。更精确的指标是数 server 块:`nginx -T | grep -cE '^\s*server\s*\{'`。
 
-![改完文件但服务照常](04-config-changed-still-serving.png)
+![改完文件但服务照常](images/nginx/04-config-changed-still-serving.png)
 
 ---
 
@@ -187,7 +187,7 @@ sudo nginx -T | grep -c server_name   # 配置里已经没有站点
 
 **服务是活的,但什么也不干。**如果只看 `systemctl` 的输出,会得出"一切正常"的错误结论——这正是四层检查存在的意义。
 
-![故障生效后的观察](05-connection-refused.png)
+![故障生效后的观察](images/nginx/05-connection-refused.png)
 
 ---
 
@@ -214,7 +214,7 @@ sudo md5sum /etc/nginx/nginx.conf
 cat /home/lzy/shell/nginx-md5sum.hash
 ```
 
-![恢复后核对指纹](06-restore-md5-verify.png)
+![恢复后核对指纹](images/nginx/06-restore-md5-verify.png)
 
 确认指纹一致之后,再让它生效并验证:
 
@@ -229,7 +229,7 @@ sudo ss -lntp 'sport = :80'
 
 **用完全相同的命令做前后对照,才算验证完成**,而不是"看起来好了"。
 
-![恢复后的验证](07-recovered.png)
+![恢复后的验证](images/nginx/07-recovered.png)
 
 ---
 
@@ -244,7 +244,7 @@ sudo ss -lntp 'sport = :80'
 
 **master 进程号从头到尾没变,worker 换了一批。**
 
-![reload 前后的进程号对比](08-final-confirm.png)
+![reload 前后的进程号对比](images/nginx/08-final-confirm.png)
 
 - master 不变 → 它一直握着 80 端口的监听套接字,**服务全程不中断**
 - worker 换新 → 新配置由新的 worker 加载,旧的优雅退出
